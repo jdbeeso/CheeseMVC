@@ -34,6 +34,10 @@ namespace CheeseMVC.Models
             return cheeses.Single(x => x.CheeseId == id);
         }
 
+        public static void Save(Cheese cheese)
+        {
+            var cheeseIndex = cheese.IndexOf(cheese);
 
+        }
     }
 }
