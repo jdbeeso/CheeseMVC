@@ -4,13 +4,20 @@
 
 <form asp-controller="Cheese" asp-action="Add" method="post">
 
+    <div asp-validation-summary="All"></div>
+    
     <div class="form-group">
-        <label for="name">Name</label>
-        <input class="form-control" name="name" id="name" type="text" />
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
     </div>
     <div class="form-group">
-        <label for="description">Description</label>
-        <input class="form-control" name="description" id="description" type="text" />
+        <label asp-for="Description"></label>
+        <input class="form-control" asp-for="Description" />
+    </div>
+
+    <div class="form-group">
+         <label asp-for="Type"></label>
+         <select asp-for="Type" asp-items="Model.CheeseTypes"></select>
     </div>
 
     <input type="submit" value="Add Cheese" />

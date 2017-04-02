@@ -36,7 +36,7 @@ namespace CheeseMVC.Models
 
         public static void Save(Cheese cheese)
         {
-            var cheeseIndex = cheese.IndexOf(cheese);
+            var cheeseIndex = (cheese);
 
         }
     }
