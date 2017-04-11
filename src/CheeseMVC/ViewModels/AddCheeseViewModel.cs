@@ -30,24 +30,22 @@ namespace CheeseMVC.ViewModels
             {
                 // <option value = "0"> Hard </option>
                 Value = ((int) CheeseType.Hard).ToString(),
-                Text = CheeseType.Hard.ToString(),
+                Text = CheeseType.Hard.ToString()
             });
 
             CheeseTypes.Add(new SelectListItem
             {
-                // <option value = "0"> Hard </option>
+                //  <option value = "1"> Soft </option>
                 Value = ((int)CheeseType.Soft).ToString(),
-                Text = CheeseType.Soft.ToString(),
+                Text = CheeseType.Soft.ToString()
             });
 
             CheeseTypes.Add(new SelectListItem
             {
-                // <option value = "0"> Hard </option>
+                // <option value = "2"> Fake </option>
                 Value = ((int)CheeseType.Fake).ToString(),
-                Text = CheeseType.Fake.ToString(),
+                Text = CheeseType.Fake.ToString()
             });
         }
     }
 }
-
-.+-
