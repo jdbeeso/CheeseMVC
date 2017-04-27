@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using CheeseMVC.Models;
 
-namespace CheeseMVC.Views.Menu
+namespace CheeseMVC.ViewModels
 {
     public class ViewMenuViewModel
     {
-        public CheeseMVC.Models.Menu { get; set; }
+        public Menu Menu { get; set; }
         public IList<CheeseMenu> Items { get; set; }
 
     }

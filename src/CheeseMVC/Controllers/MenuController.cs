@@ -47,11 +47,13 @@ namespace CheeseMVC.Controllers
 
                 return Redirect("/Menu/ViewMenu/" + newMenu.ID);
             }
+            return View(addMenuViewModel);
         }
+
         public IActionResult ViewMenu()
         {
-
+            return Redirect("/");
         }
         }
     }
-}
+
