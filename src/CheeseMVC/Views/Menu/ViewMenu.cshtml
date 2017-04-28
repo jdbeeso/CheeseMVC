@@ -1,0 +1,26 @@
+﻿@model List<CheeseMVC.Models.CheeseMenu>
+
+@{
+    ViewBag.Title = "MENU NAME";
+}
+
+<h1>@ViewBag.Title</h1>
+
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Cheese</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Menu</td>
+            <td>@item.Cheese</td>
+        </tr>
+    }
+</table>
+
+<p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>

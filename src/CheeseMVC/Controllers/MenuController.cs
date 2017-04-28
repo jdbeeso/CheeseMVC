@@ -7,6 +7,7 @@ using CheeseMVC.Controllers;
 using CheeseMVC.Data;
 using CheeseMVC.Models;
 using CheeseMVC.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -50,9 +51,11 @@ namespace CheeseMVC.Controllers
             return View(addMenuViewModel);
         }
 
-        public IActionResult ViewMenu()
+        public IActionResult ViewMenu(int id)
         {
-            return Redirect("/");
+            List<CheeseMenu> items = context.CheeseMenus.Include(item => item.Cheese).Where(cm => cm.MenuID == id)
+        .ToList();
+            return View(items);
         }
         }
     }
