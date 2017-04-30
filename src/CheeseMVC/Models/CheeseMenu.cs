@@ -8,7 +8,6 @@ namespace CheeseMVC.Models
 {
     public class CheeseMenu
     {
-        
         public int MenuID { get; set; }
         public Menu Menu { get; set; }
 
