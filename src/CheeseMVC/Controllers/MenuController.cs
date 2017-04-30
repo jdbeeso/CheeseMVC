@@ -75,7 +75,7 @@ namespace CheeseMVC.Controllers
         {
             Menu newMenu = context.Menus.Single(m => m.ID == id);
 
-            AddItemViewModel addItemViewModel = new AddItemViewModel()
+            AddMenuItemViewModel addItemViewModel = new AddMenuItemViewModel()
             {
                 //Items = items,
                 Menu = newMenu
