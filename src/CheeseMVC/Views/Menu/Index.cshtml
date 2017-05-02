@@ -17,7 +17,7 @@
     @foreach (var menu in Model)
     {
         <tr>
-            <td>@menu.Name</td>
+            <td><a href="/Menu/ViewMenu/@menu.ID">@menu.Name</a></td>
             <td>@menu.ID</td>
         </tr>
     }
