@@ -36,6 +36,7 @@ namespace CheeseMVC.Controllers
         [HttpPost]
         public IActionResult Add(AddMenuViewModel addMenuViewModel)
         {
+            AddMenuItemViewModel addMenuItemViewModel = new AddMenuItemViewModel();
             if (ModelState.IsValid)
             {
                 Menu newMenu = new Menu
@@ -46,7 +47,7 @@ namespace CheeseMVC.Controllers
                 context.Menus.Add(newMenu);
                 context.SaveChanges();
 
-                return Redirect("/Menu/ViewMenu/" + newMenu.ID);
+                return Redirect(string.Format("/Menu/ViewMenu/{0}", addMenuItemViewModel.MenuID));
             }
             return View(addMenuViewModel);
         }
@@ -71,19 +72,54 @@ namespace CheeseMVC.Controllers
             return View(viewMenuViewModel);
         }
 
+
         public IActionResult AddItem(int id)
         {
             Menu newMenu = context.Menus.Single(m => m.ID == id);
 
             AddMenuItemViewModel addItemViewModel = new AddMenuItemViewModel()
             {
-                //Items = items,
+                CheeseID = id,
                 Menu = newMenu
             };
 
             return View(addItemViewModel);
         }
-    }
 
+        [HttpPost]
+        public IActionResult AddItem(AddMenuItemViewModel addMenuItemViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var cheeseID = addMenuItemViewModel.CheeseID;
+                var menuID = addMenuItemViewModel.MenuID;
+
+                IList<CheeseMenu> menuCheeses = context
+                    .CheeseMenus
+                    .Where(cm => cm.CheeseID == cheeseID)
+                    .Where(cm => cm.MenuID == menuID)
+                    .ToList();
+
+                if (menuCheeses.Count == 0)
+                {
+                    CheeseMenu menuItem = new CheeseMenu
+                    {
+                        Cheese = context.Cheeses.Single(c => c.ID == cheeseID),
+                        Menu = context.Menus.Single(m => m.ID == menuID)
+
+
+                    };
+
+
+
+                    context.CheeseMenus.Add(menuItem);
+                    context.SaveChanges();
+                }
+
+                return Redirect(string.Format("/Menu/ViewMenu/{0}", addMenuItemViewModel.MenuID));
+            }
+            return View(addMenuItemViewModel);
+        }
+    }
 }
 
